@@ -19,8 +19,9 @@ import sys
 # Visa  205.96
 # Cash  455.51
 
-# Sum of all sales (values) is initialized with zero, we just started
+# Count of sales (values) is initialized with zero, we just started
 count = 0
+sales = 0
 
 # Previous key is initialized with None, we just started
 previous_key = None
@@ -45,16 +46,19 @@ for line in sys.stdin:
         # to the standart output (stdout)
         # Key and value are seperated by a tab (\t)
         # Line ends with new line (\n)
-        if count > 114 :
-             sys.stdout.write("{0}\t{1}\n".format(previous_key, count))
+        #if count > 114 :
+        sys.stdout.write("{0}\t{1}\n".format(previous_key, sales/count))
         # Counts start again with 0
         count = 0
+        # Sum of sales starts again with 0
+        sales = 0
 
     # Increase count
     count += 1
+    sales += float(value)
     # the previous key for the next iteration is the current key of the this iteration 
     previous_key = key
 
     # write the last result to stdout
-if count > 114 :
-    sys.stdout.write("{0}\t{1}\n".format(previous_key, count))
+#if count > 114 :
+sys.stdout.write("{0}\t{1}\n".format(previous_key, sales/count))
