@@ -38,21 +38,18 @@ for line in sys.stdin:
 
     # Do we have a previous_key (previous_key != None) and 
     # is the new key different than the previous key?
-    # This means the line starts with a new key (key changes e.g. from "Visa" to "Cash")
+    # This means the line starts with a new key (key changes e.g. from one category to another)
     # Remember that our keys are sorted
     if previous_key != None and previous_key != key:
-        # Then write the result of the old key (Key=category, Value= Sum of Sales)
+        # Then write the result of the old key (Key=category, Value= Count)
         # to the standart output (stdout)
         # Key and value are seperated by a tab (\t)
         # Line ends with new line (\n)
         sys.stdout.write("{0}\t{1}\n".format(previous_key, count))
-        # Sum of sales starts again with 0
+        # Counts start again with 0
         count = 0
 
-    # Add the value to the total sales
-    # a += b is the same as a = a + b
-    # the float function transforms the value
-    # to a float data type (like decimal)
+    # Increase count
     count += 1
     # the previous key for the next iteration is the current key of the this iteration 
     previous_key = key
